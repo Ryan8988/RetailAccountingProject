@@ -9,24 +9,41 @@ import { InventoryComponent } from './inventory/inventory.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SaleListService} from './sale-list/sale-list.service';
 import {DataStotageService} from './shared/data-stotage.service';
-import {MatTableModule} from '@angular/material';
+import {MatInputModule, MatTableModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {firebaseConfig} from '../environments/firebase.config';
+import {MatDialogModule} from '@angular/material/dialog';
+import { OrderDetailPopupComponent } from './order-detail-popup/order-detail-popup.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     SaleListComponent,
-    InventoryComponent
+    InventoryComponent,
+    OrderDetailPopupComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
+    MatDialogModule, MatInputModule,
+    ReactiveFormsModule
+
   ],
   providers: [SaleListService, DataStotageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [OrderDetailPopupComponent]
 })
 export class AppModule { }
