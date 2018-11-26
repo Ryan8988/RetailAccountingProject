@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit</h2>
+
+<mat-dialog-content [formGroup]="orderDetailForm">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Item Name" formControlName="itemname">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Buyer" formControlName="buyer">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Sell" formControlName="sell">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Cost" formControlName="cost">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Profit" formControlName="profit">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="mt-5">
+    <button class="btn btn-success" (click)="openAddDialog()">New Order</button>
+  </div>
+</div>
+
+
+<div fxLayout="column" style="height:100%">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="64px">
+    <h2>Retail Records</h2>
+  </div>
+
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="{{item}}">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let order"> {{order.itemname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{buyer}}">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Buyer </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let order"> {{order.buyer}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{sell_price}}">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Sell Price </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let order"> {{order.sell}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{cost}}">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Cost </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let order"> {{order.cost}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{profit}}">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Profit </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let order"> {{order.profit}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{action}}">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let order; let i=index;">
+        <button class="btn btn-success" (click)="openEditDialog(i,order)">Edit</button>
+        <button class="btn btn-success ml-1" (click)="openDeleteDialog()">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; let i = index; columns: columns;"
+             fxLayoutAlign="start center">
+    </mat-row>
+  </mat-table>
+</div>

@@ -1,24 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule, MatTableModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SaleListComponent } from './sale-list/sale-list.component';
 import { InventoryComponent } from './inventory/inventory.component';
-import {HttpClientModule} from '@angular/common/http';
 import {SaleListService} from './sale-list/sale-list.service';
 import {DataStotageService} from './shared/data-stotage.service';
-import {MatInputModule, MatTableModule} from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {firebaseConfig} from '../environments/firebase.config';
-import {MatDialogModule} from '@angular/material/dialog';
-import { OrderDetailPopupComponent } from './order-detail-popup/order-detail-popup.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from '@angular/forms';
+import { DeleteComponent } from './dialog/delete/delete.component';
+import { EditComponent } from './dialog/edit/edit.component';
+import {AddComponent} from './dialog/add/add.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     NavigationComponent,
     SaleListComponent,
     InventoryComponent,
-    OrderDetailPopupComponent
+    AddComponent,
+    DeleteComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,6 @@ import {ReactiveFormsModule} from '@angular/forms';
   ],
   providers: [SaleListService, DataStotageService],
   bootstrap: [AppComponent],
-  entryComponents: [OrderDetailPopupComponent]
+  entryComponents: [AddComponent, EditComponent, DeleteComponent]
 })
 export class AppModule { }
